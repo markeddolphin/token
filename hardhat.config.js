@@ -3,12 +3,11 @@ require("hardhat-contract-sizer");
 require("hardhat-gas-reporter");
 require("hardhat-deploy");
 require("solidity-coverage");
+require("dotenv");
 
 // You need to export an object to set up your config
 // Go to https://hardhat.org/config/ to learn more
 
-// const GOERLI_PRIVATE_KEY = "YOUR_PRIVATE_KEY";
-// const GOERLI_ALCHEMY_API_KEY = "YOUR_API_KEY";
 
 /**
  * @type import('hardhat/config').HardhatUserConfig
@@ -27,11 +26,12 @@ module.exports = {
     hardhat: {
       deploy: ["deploy/core", "deploy/test", "deploy/testnet"],
     },
-    // goerli: {
-    //   deploy: ["deploy/core", "deploy/testnet"],
-    //   url: `https://eth-goerli.alchemyapi.io/v2/${GOERLI_ALCHEMY_API_KEY}`,
-    //   accounts: [`0x${GOERLI_PRIVATE_KEY}`],
-    // },
+    goerli: {
+      deploy: ["deploy/core", "deploy/testnet"],
+      url: process.env.GOERLI_URL,
+      accounts:
+        process.env.GOERLI_PRIVATE_KEY !== undefined ? [process.env.GOERLI_PRIVATE_KEY] : [],
+    },
   },
   paths: {
     deploy: ["deploy/core"],
@@ -40,7 +40,6 @@ module.exports = {
   namedAccounts: {
     admin: {
       default: 0,
-      goerli: "0x5fD46DbFCebA8EB28485fF7733FC7c00Ca861d7c",
     },
     liquidityProvider1: {
       default: 1,
@@ -56,7 +55,6 @@ module.exports = {
     },
     feeRecipient: {
       default: 5,
-      goerli: "0x5B68bE5a991eE3bc944819073Da0d1dD27912093",
     },
   },
   contractSizer: {
