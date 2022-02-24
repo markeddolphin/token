@@ -195,7 +195,7 @@ contract StakingPools is ReentrancyGuard {
         continue;
       }
 
-      _totalRewardWeight = _totalRewardWeight +  _rewardWeights[_poolId] - _currentRewardWeight;
+      _totalRewardWeight = _totalRewardWeight - _currentRewardWeight +  _rewardWeights[_poolId] ;
       _pool.rewardWeight = _rewardWeights[_poolId];
 
       emit PoolRewardWeightUpdated(_poolId, _rewardWeights[_poolId]);
