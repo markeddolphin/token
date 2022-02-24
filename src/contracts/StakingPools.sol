@@ -1,22 +1,19 @@
 // SPDX-License-Identifier: GPL-3.0
-pragma solidity ^0.6.12;
-pragma experimental ABIEncoderV2;
+pragma solidity 0.8.4;
 
 //import "hardhat/console.sol";
 
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
-import {ReentrancyGuard} from "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
-import {SafeMath} from "@openzeppelin/contracts/math/SafeMath.sol";
-import {SafeERC20} from "@openzeppelin/contracts/token/ERC20/SafeERC20.sol";
+import {ReentrancyGuard} from "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+import {SafeERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 
-import {FixedPointMath} from "./libraries/FixedPointMath.sol";
-import {IMintableERC20} from "./interfaces/IMintableERC20.sol";
-import {Pool} from "./libraries/pools/Pool.sol";
-import {Stake} from "./libraries/pools/Stake.sol";
+import {FixedPointMath} from "../libraries/FixedPointMath.sol";
+import {IMintableERC20} from "../interfaces/IMintableERC20.sol";
+import {Pool} from "../libraries/pools/Pool.sol";
+import {Stake} from "../libraries/pools/Stake.sol";
 import {StakingPools} from "./StakingPools.sol";
 
-import "hardhat/console.sol";
 
 /// @title StakingPools
 //    ___    __        __                _               ___                              __         _ 
@@ -40,7 +37,6 @@ contract StakingPools is ReentrancyGuard {
   using Pool for Pool.Data;
   using Pool for Pool.List;
   using SafeERC20 for IERC20;
-  using SafeMath for uint256;
   using Stake for Stake.Data;
 
   event PendingGovernanceUpdated(
@@ -107,7 +103,7 @@ contract StakingPools is ReentrancyGuard {
   constructor(
     IMintableERC20 _reward,
     address _governance
-  ) public {
+  ) {
     require(_governance != address(0), "StakingPools: governance address cannot be 0x0");
 
     reward = _reward;
@@ -190,7 +186,8 @@ contract StakingPools is ReentrancyGuard {
     _updatePools();
 
     uint256 _totalRewardWeight = _ctx.totalRewardWeight;
-    for (uint256 _poolId = 0; _poolId < _pools.length(); _poolId++) {
+    uint256 poolsLength = _pools.length();
+    for (uint256 _poolId = 0; _poolId < poolsLength; _poolId++) {
       Pool.Data storage _pool = _pools.get(_poolId);
 
       uint256 _currentRewardWeight = _pool.rewardWeight;
@@ -198,8 +195,7 @@ contract StakingPools is ReentrancyGuard {
         continue;
       }
 
-      // FIXME
-      _totalRewardWeight = _totalRewardWeight.sub(_currentRewardWeight).add(_rewardWeights[_poolId]);
+      _totalRewardWeight = _totalRewardWeight +  _rewardWeights[_poolId] - _currentRewardWeight;
       _pool.rewardWeight = _rewardWeights[_poolId];
 
       emit PoolRewardWeightUpdated(_poolId, _rewardWeights[_poolId]);
@@ -367,8 +363,8 @@ contract StakingPools is ReentrancyGuard {
     Pool.Data storage _pool = _pools.get(_poolId);
     Stake.Data storage _stake = _stakes[msg.sender][_poolId];
 
-    _pool.totalDeposited = _pool.totalDeposited.add(_depositAmount);
-    _stake.totalDeposited = _stake.totalDeposited.add(_depositAmount);
+    _pool.totalDeposited = _pool.totalDeposited + _depositAmount;
+    _stake.totalDeposited = _stake.totalDeposited + _depositAmount;
 
     _pool.token.safeTransferFrom(msg.sender, address(this), _depositAmount);
 
@@ -385,8 +381,8 @@ contract StakingPools is ReentrancyGuard {
     Pool.Data storage _pool = _pools.get(_poolId);
     Stake.Data storage _stake = _stakes[msg.sender][_poolId];
 
-    _pool.totalDeposited = _pool.totalDeposited.sub(_withdrawAmount);
-    _stake.totalDeposited = _stake.totalDeposited.sub(_withdrawAmount);
+    _pool.totalDeposited = _pool.totalDeposited - _withdrawAmount;
+    _stake.totalDeposited = _stake.totalDeposited - _withdrawAmount;
 
     _pool.token.safeTransfer(msg.sender, _withdrawAmount);
 

@@ -1,12 +1,10 @@
 // SPDX-License-Identifier: GPL-3.0
-pragma solidity ^0.6.12;
-pragma experimental ABIEncoderV2;
+pragma solidity 0.8.4;
 
 import {AccessControl} from "@openzeppelin/contracts/access/AccessControl.sol";
 import {ERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 
-import {IDetailedERC20} from "./interfaces/IDetailedERC20.sol";
 
 /// @title AlchemixToken
 ///
@@ -23,7 +21,7 @@ contract AlchemixToken is AccessControl, ERC20("Alchemix", "ALCX") {
   /// @dev The identifier of the role which allows accounts to mint tokens.
   bytes32 public constant MINTER_ROLE = keccak256("MINTER");
 
-  constructor() public {
+  constructor() {
     _setupRole(ADMIN_ROLE, msg.sender);
     _setupRole(MINTER_ROLE, msg.sender);
     _setRoleAdmin(MINTER_ROLE, ADMIN_ROLE);
