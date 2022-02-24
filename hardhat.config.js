@@ -61,10 +61,10 @@ module.exports = {
   },
   contractSizer: {
     alphaSort: true,
-    runOnCompile: true,
+    runOnCompile: false,
   },
   gasReporter: {
-    enabled: true,
+    enabled: false,
     currency: "USD",
   },
 };
