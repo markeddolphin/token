@@ -24,7 +24,7 @@ module.exports = {
   },
   networks: {
     hardhat: {
-      deploy: ["deploy/core", "deploy/test", "deploy/testnet"],
+      deploy: ["deploy"],
     },
     goerli: {
       deploy: ["deploy/core", "deploy/testnet"],
@@ -41,8 +41,10 @@ module.exports = {
     admin: {
       default: 0,
     },
-    liquidityProvider1: {
+    governance: {
       default: 1,
+      goerli: process.env.GOERLI_GOVERNANCE_ADDRESS,
+      mainnet: process.env.MAINNET_GOVERNANCE_ADDRESS
     },
     liquidityProvider2: {
       default: 2,
