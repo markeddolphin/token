@@ -3,12 +3,15 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   const namedAccounts = await getNamedAccounts();
   const { admin, governance } = namedAccounts;
   
-  // configure relative weights for emissions of tokens
+  // configure relative weights for emissions of tokens (NOTE: ORDER MATTERS!)
   const poolWeights = {
-    team: 1000,
+    team: 1600,   
     preSeed: 1000,
-    dao: 8000, 
+    dao: 1000, 
+    public: 6400, // eventually this can be split into JAM<>ETH LP and JAM only. 
   }
+  // establish how many tokens are emitted per block
+  const rewardRate = ethers.utils.parseUnits("2.0", 18); // 2 with 18 decimals / block
 
   const poolLib = await deployments.get("Pool");
   const stakeLib = await deployments.get("Stake");
@@ -49,11 +52,18 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     log(`Creating pool for Time Token DAO address:${timeTokenDAO.address}`);
     await stakingPools.createPool(timeTokenDAO.address);
 
+    log(`Creating pool for Jam address:${jamToken.address}`);
+    await stakingPools.createPool(jamToken.address);
+
     // 2. Set weights for tokens
     log(`Setting pool weights: ${JSON.stringify(poolWeights)}`);
     await stakingPools.setRewardWeights(Object.values(poolWeights));
 
-    // 3. set pending governance to DAO
+    // 3. Set the block reward rate 
+    log(`Setting reward rate per block to: ${rewardRate}`);
+    await stakingPools.setRewardRate(rewardRate);
+
+    // 4. set pending governance to DAO
     log(`Setting Pending Governance to : ${governance}`);
     await stakingPools.setPendingGovernance(governance);
   }

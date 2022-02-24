@@ -53,10 +53,62 @@ describe("StakingPools", () => {
     });
 
     it("Should have the correct pending governance", async () => {
-      []
       expect(await stakingPools.pendingGovernance()).to.equal(namedAccounts.governance);
     });
+    
   });
+
+  describe("emissions are set properly in initial deployment", () => {
+    it("Team tokens are configured properly", async () => {
+      const teamAllocationPercent = 16;
+      const totalEmissionsPerBlock = ethers.utils.parseUnits("2.0", 18);
+      const teamEmissionsPerBlock = totalEmissionsPerBlock.mul(teamAllocationPercent).div(100);
+      
+      expect(await stakingPools.rewardRate()).to.equal(totalEmissionsPerBlock);
+      expect(await stakingPools.getPoolToken(0)).to.equal(timeTokenTeam.address);
+      expect(await stakingPools.getPoolRewardWeight(0)).to.equal(1600);
+      expect(await stakingPools.getPoolRewardRate(0)).to.equal(teamEmissionsPerBlock);
+    });
+
+    it("Pre-seed tokens are configured properly", async () => {
+      const allocationPercent = 10;
+      const totalEmissionsPerBlock = ethers.utils.parseUnits("2.0", 18);
+      const emissionsPerBlock = totalEmissionsPerBlock.mul(allocationPercent).div(100);
+      
+      expect(await stakingPools.rewardRate()).to.equal(totalEmissionsPerBlock);
+      expect(await stakingPools.getPoolToken(1)).to.equal(timeTokenPreSeed.address);
+      expect(await stakingPools.getPoolRewardWeight(1)).to.equal(1000);
+      expect(await stakingPools.getPoolRewardRate(1)).to.equal(emissionsPerBlock);
+    });
+
+    it("DAO tokens are configured properly", async () => {
+      const allocationPercent = 10;
+      const totalEmissionsPerBlock = ethers.utils.parseUnits("2.0", 18);
+      const emissionsPerBlock = totalEmissionsPerBlock.mul(allocationPercent).div(100);
+      
+      expect(await stakingPools.rewardRate()).to.equal(totalEmissionsPerBlock);
+      expect(await stakingPools.getPoolToken(2)).to.equal(timeTokenDAO.address);
+      expect(await stakingPools.getPoolRewardWeight(2)).to.equal(1000);
+      expect(await stakingPools.getPoolRewardRate(2)).to.equal(emissionsPerBlock);
+    });
+
+    it("JAM staking is configured properly", async () => {
+      const allocationPercent = 64;
+      const totalEmissionsPerBlock = ethers.utils.parseUnits("2.0", 18);
+      const emissionsPerBlock = totalEmissionsPerBlock.mul(allocationPercent).div(100);
+      
+      expect(await stakingPools.rewardRate()).to.equal(totalEmissionsPerBlock);
+      expect(await stakingPools.getPoolToken(3)).to.equal(jamToken.address);
+      expect(await stakingPools.getPoolRewardWeight(3)).to.equal(6400);
+      expect(await stakingPools.getPoolRewardRate(3)).to.equal(emissionsPerBlock);
+    });
+
+
+
+  });
+  
+  // test getpoolToken and getPoolRewardWeight
+  // getPoolRewardRate
 
   // describe("createNewExchange", () => {
   //   it("Should deploy a new exchange and add to mappings", async () => {
