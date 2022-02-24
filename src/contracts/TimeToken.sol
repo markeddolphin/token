@@ -10,7 +10,7 @@ import {ERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 /// @dev This is the contract for the Alchemix time token.
 ///
 
-contract TimeToken is AccessControl, ERC20("Technological Instantiation Meta Env", "TIME") {
+contract TimeToken is AccessControl, ERC20 {
 
   /// @dev The identifier of the role which maintains other roles.
   bytes32 public constant ADMIN_ROLE = keccak256("ADMIN");
@@ -18,7 +18,7 @@ contract TimeToken is AccessControl, ERC20("Technological Instantiation Meta Env
   /// @dev The identifier of the role which allows accounts to mint tokens.
   bytes32 public constant MINTER_ROLE = keccak256("MINTER");
 
-  constructor() {
+  constructor(string memory _name, string memory _symbol) ERC20(_name, _symbol) {
     _setupRole(ADMIN_ROLE, msg.sender);
     _setupRole(MINTER_ROLE, msg.sender);
     _setRoleAdmin(MINTER_ROLE, ADMIN_ROLE);
