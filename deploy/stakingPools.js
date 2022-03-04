@@ -8,7 +8,7 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     team: 1600,   
     preSeed: 1000,
     dao: 1000, 
-    public: 6400, // eventually this can be split into JAM<>ETH LP and JAM only. 
+    public: 6400, // eventually this can be split into TIC<>ETH LP and TIC only. 
   }
   // establish how many tokens are emitted per block
   const rewardRate = ethers.utils.parseUnits("2.0", 18); // 2 with 18 decimals / block
@@ -16,7 +16,7 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   const poolLib = await deployments.get("Pool");
   const stakeLib = await deployments.get("Stake");
   const fixedPointMathLib = await deployments.get("FixedPointMath");
-  const jamToken = await deployments.get("JamToken");
+  const ticToken = await deployments.get("TicToken");
   const timeTokenDAO = await deployments.get("TimeTokenDAO");
   const timeTokenTeam = await deployments.get("TimeTokenTeam");
   const timeTokenPreSeed = await deployments.get("TimeTokenPreSeed");
@@ -24,7 +24,7 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   const deployResult = await deploy("StakingPools", {
     from: admin,
     contract: "StakingPools",
-    args: [ jamToken.address, admin],
+    args: [ ticToken.address, admin],
     libraries: {
       Pool: poolLib.address,
       Stake: stakeLib.address,
@@ -52,8 +52,8 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     log(`Creating pool for Time Token DAO address:${timeTokenDAO.address}`);
     await stakingPools.createPool(timeTokenDAO.address);
 
-    log(`Creating pool for Jam address:${jamToken.address}`);
-    await stakingPools.createPool(jamToken.address);
+    log(`Creating pool for TIC address:${ticToken.address}`);
+    await stakingPools.createPool(ticToken.address);
 
     // 2. Set weights for tokens
     log(`Setting pool weights: ${JSON.stringify(poolWeights)}`);
@@ -73,7 +73,7 @@ module.exports.dependencies = [
   "Pool", 
   "Stake", 
   "FixedPointMath", 
-  "JamToken",
+  "TicToken",
   "TimeTokenDAO",
   "TimeTokenTeam",
   "TimeTokenPreSeed"

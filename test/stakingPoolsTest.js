@@ -6,7 +6,7 @@ describe("StakingPools", () => {
   let timeTokenTeam;
   let timeTokenDAO;
   let timeTokenPreSeed;
-  let jamToken;
+  let ticToken;
   let accounts;
   let namedAccounts;
 
@@ -21,8 +21,8 @@ describe("StakingPools", () => {
       accounts[0]
     );
 
-    const JamToken = await deployments.get("JamToken");
-    jamToken = new ethers.Contract(JamToken.address, JamToken.abi, accounts[0]);
+    const TicToken = await deployments.get("TicToken");
+    ticToken = new ethers.Contract(TicToken.address, TicToken.abi, accounts[0]);
 
     const TimeTokenTeam = await deployments.get("TimeTokenTeam");
     timeTokenTeam = new ethers.Contract(
@@ -48,65 +48,83 @@ describe("StakingPools", () => {
   });
 
   describe("constructor", () => {
-    it("Should have the correct rewards token, JAM", async () => {
-      expect(await stakingPools.reward()).to.equal(jamToken.address);
+    it("Should have the correct rewards token, TIC", async () => {
+      expect(await stakingPools.reward()).to.equal(ticToken.address);
     });
 
     it("Should have the correct pending governance", async () => {
-      expect(await stakingPools.pendingGovernance()).to.equal(namedAccounts.governance);
+      expect(await stakingPools.pendingGovernance()).to.equal(
+        namedAccounts.governance
+      );
     });
-    
   });
 
   describe("emissions are set properly in initial deployment", () => {
     it("Team tokens are configured properly", async () => {
       const teamAllocationPercent = 16;
       const totalEmissionsPerBlock = ethers.utils.parseUnits("2.0", 18);
-      const teamEmissionsPerBlock = totalEmissionsPerBlock.mul(teamAllocationPercent).div(100);
-      
+      const teamEmissionsPerBlock = totalEmissionsPerBlock
+        .mul(teamAllocationPercent)
+        .div(100);
+
       expect(await stakingPools.rewardRate()).to.equal(totalEmissionsPerBlock);
-      expect(await stakingPools.getPoolToken(0)).to.equal(timeTokenTeam.address);
+      expect(await stakingPools.getPoolToken(0)).to.equal(
+        timeTokenTeam.address
+      );
       expect(await stakingPools.getPoolRewardWeight(0)).to.equal(1600);
-      expect(await stakingPools.getPoolRewardRate(0)).to.equal(teamEmissionsPerBlock);
+      expect(await stakingPools.getPoolRewardRate(0)).to.equal(
+        teamEmissionsPerBlock
+      );
     });
 
     it("Pre-seed tokens are configured properly", async () => {
       const allocationPercent = 10;
       const totalEmissionsPerBlock = ethers.utils.parseUnits("2.0", 18);
-      const emissionsPerBlock = totalEmissionsPerBlock.mul(allocationPercent).div(100);
-      
+      const emissionsPerBlock = totalEmissionsPerBlock
+        .mul(allocationPercent)
+        .div(100);
+
       expect(await stakingPools.rewardRate()).to.equal(totalEmissionsPerBlock);
-      expect(await stakingPools.getPoolToken(1)).to.equal(timeTokenPreSeed.address);
+      expect(await stakingPools.getPoolToken(1)).to.equal(
+        timeTokenPreSeed.address
+      );
       expect(await stakingPools.getPoolRewardWeight(1)).to.equal(1000);
-      expect(await stakingPools.getPoolRewardRate(1)).to.equal(emissionsPerBlock);
+      expect(await stakingPools.getPoolRewardRate(1)).to.equal(
+        emissionsPerBlock
+      );
     });
 
     it("DAO tokens are configured properly", async () => {
       const allocationPercent = 10;
       const totalEmissionsPerBlock = ethers.utils.parseUnits("2.0", 18);
-      const emissionsPerBlock = totalEmissionsPerBlock.mul(allocationPercent).div(100);
-      
+      const emissionsPerBlock = totalEmissionsPerBlock
+        .mul(allocationPercent)
+        .div(100);
+
       expect(await stakingPools.rewardRate()).to.equal(totalEmissionsPerBlock);
       expect(await stakingPools.getPoolToken(2)).to.equal(timeTokenDAO.address);
       expect(await stakingPools.getPoolRewardWeight(2)).to.equal(1000);
-      expect(await stakingPools.getPoolRewardRate(2)).to.equal(emissionsPerBlock);
+      expect(await stakingPools.getPoolRewardRate(2)).to.equal(
+        emissionsPerBlock
+      );
     });
 
-    it("JAM staking is configured properly", async () => {
+    it("TIC staking is configured properly", async () => {
       const allocationPercent = 64;
       const totalEmissionsPerBlock = ethers.utils.parseUnits("2.0", 18);
-      const emissionsPerBlock = totalEmissionsPerBlock.mul(allocationPercent).div(100);
-      
+      const emissionsPerBlock = totalEmissionsPerBlock
+        .mul(allocationPercent)
+        .div(100);
+
       expect(await stakingPools.rewardRate()).to.equal(totalEmissionsPerBlock);
-      expect(await stakingPools.getPoolToken(3)).to.equal(jamToken.address);
+      expect(await stakingPools.getPoolToken(3)).to.equal(ticToken.address);
       expect(await stakingPools.getPoolRewardWeight(3)).to.equal(6400);
-      expect(await stakingPools.getPoolRewardRate(3)).to.equal(emissionsPerBlock);
+      expect(await stakingPools.getPoolRewardRate(3)).to.equal(
+        emissionsPerBlock
+      );
     });
-
-
-
   });
-  
+
   // test getpoolToken and getPoolRewardWeight
   // getPoolRewardRate
 

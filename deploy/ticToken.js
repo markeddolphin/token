@@ -3,14 +3,14 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   const namedAccounts = await getNamedAccounts();
   const { admin } = namedAccounts;
 
-  const deployResult = await deploy("JamToken", {
+  const deployResult = await deploy("TicToken", {
     from: admin,
-    contract: "JamToken",
+    contract: "TicToken",
   });
   if (deployResult.newlyDeployed) {
     log(
-      `Jam Token deployed at ${deployResult.address} using ${deployResult.receipt.gasUsed} gas`
+      `TIC Token deployed at ${deployResult.address} using ${deployResult.receipt.gasUsed} gas`
     );
   }
 };
-module.exports.tags = ["JamToken"];
+module.exports.tags = ["TicToken"];
