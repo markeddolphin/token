@@ -32,6 +32,14 @@ module.exports = {
       accounts:
         process.env.GOERLI_PRIVATE_KEY !== undefined ? [process.env.GOERLI_PRIVATE_KEY] : [],
     },
+    fuji: {
+      deploy: ["deploy"],
+      url: 'https://api.avax-test.network/ext/bc/C/rpc',
+      gasPrice: 225000000000,
+      chainId: 43113,
+      accounts:
+        process.env.FUJI_PRIVATE_KEY !== undefined ? [process.env.FUJI_PRIVATE_KEY] : [],
+    }
   },
   paths: {
     deploy: ["deploy/core"],
