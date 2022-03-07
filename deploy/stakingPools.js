@@ -57,7 +57,7 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
 
     // 2. Set weights for tokens
     log(`Setting pool weights: ${JSON.stringify(poolWeights)}`);
-    await stakingPools.setRewardWeights(Object.values(poolWeights));
+    await stakingPools.setRewardWeights(Object.values(poolWeights), {gasLimit: 300000});
 
     // 3. Set the block reward rate 
     log(`Setting reward rate per block to: ${rewardRate}`);

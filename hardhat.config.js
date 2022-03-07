@@ -27,7 +27,7 @@ module.exports = {
       deploy: ["deploy"],
     },
     goerli: {
-      deploy: ["deploy/core", "deploy/testnet"],
+      deploy: ["deploy"],
       url: process.env.GOERLI_URL,
       accounts:
         process.env.GOERLI_PRIVATE_KEY !== undefined ? [process.env.GOERLI_PRIVATE_KEY] : [],
