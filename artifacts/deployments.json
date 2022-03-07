@@ -2718,7 +2718,7 @@
       "chainId": "43113",
       "contracts": {
         "FixedPointMath": {
-          "address": "0x8E17d14D51036574428b0284174923208eC2874d",
+          "address": "0x02612b88767405b5EC49443fd428c14Ee635302f",
           "abi": [
             {
               "inputs": [],
@@ -2749,15 +2749,15 @@
           ]
         },
         "Pool": {
-          "address": "0xf2FeF7fF4D79990553178fae0526a09d81F97Ef5",
+          "address": "0x1Ad00EA5e9bce9Ac6Ca4E237DcB4BD7924316f61",
           "abi": []
         },
         "Stake": {
-          "address": "0x47b5589a59454459Dc9FCB0bc2A3A631CB513521",
+          "address": "0xa234955d88E028b6827bD56B2DcE84dB0B3F8772",
           "abi": []
         },
         "TicToken": {
-          "address": "0x122A45037ef1bC9C4B2Ae5A1f81733D9e272DC6E",
+          "address": "0xB21614C668aeef188C86A43bf3328B052eEc9cD4",
           "abi": [
             {
               "inputs": [],
@@ -3285,7 +3285,7 @@
           ]
         },
         "TimeTokenDAO": {
-          "address": "0x5641F9690dEe4238595230eBBEC0C9972a625b9C",
+          "address": "0x7183e94a9b15eeC04D8363108d0bB9726E747948",
           "abi": [
             {
               "inputs": [
@@ -3824,7 +3824,7 @@
           ]
         },
         "TimeTokenTeam": {
-          "address": "0xe3F68037b4B5bA33F894AE80B750e18B0b744050",
+          "address": "0xC291b22ef5335F56C71f8Ba138957E5bE8605d51",
           "abi": [
             {
               "inputs": [
@@ -4363,7 +4363,7 @@
           ]
         },
         "TimeTokenPreSeed": {
-          "address": "0xDA4444E3eD5D0d2C801016451206080CedbdF6Bc",
+          "address": "0xDE20c0bC5c0F6Ad018E975B8276c3121e95E97CF",
           "abi": [
             {
               "inputs": [
@@ -4902,7 +4902,7 @@
           ]
         },
         "StakingPools": {
-          "address": "0xB49CC30368C3F3bE2BE2739EDB619a759EC78E52",
+          "address": "0x74b4289f06130938dd540e9e2F69d79FC8E6F015",
           "abi": [
             {
               "inputs": [
