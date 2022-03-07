@@ -52,7 +52,8 @@ module.exports = {
     governance: {
       default: 1,
       goerli: process.env.GOERLI_GOVERNANCE_ADDRESS,
-      mainnet: process.env.MAINNET_GOVERNANCE_ADDRESS
+      mainnet: process.env.MAINNET_GOVERNANCE_ADDRESS,
+      fuji: process.env.FUJI_GOVERNANCE_ADDRESS,
     },
     liquidityProvider2: {
       default: 2,
