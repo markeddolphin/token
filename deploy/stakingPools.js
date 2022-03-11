@@ -43,6 +43,11 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
       deployResult.abi,
       accounts[0]
     );
+    const ticTokenContract = new ethers.Contract(
+      ticToken.address,
+      ticToken.abi,
+      accounts[0]
+    );
     log(`Creating pool for Time Token Team address:${timeTokenTeam.address}`);
     await stakingPools.createPool(timeTokenTeam.address);
    
@@ -66,6 +71,10 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     // 4. set pending governance to DAO
     log(`Setting Pending Governance to : ${governance}`);
     await stakingPools.setPendingGovernance(governance);
+
+    // 5. grant minter role to staking pool!
+    const minterRole = await ticTokenContract.MINTER_ROLE();
+    await ticTokenContract.grantRole(minterRole, stakingPools.address);
   }
 };
 module.exports.tags = ["StakingPools"];
