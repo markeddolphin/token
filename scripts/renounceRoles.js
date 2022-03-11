@@ -56,7 +56,7 @@ async function main () {
   const timeTokenTeamMinterRole = await timeTokenTeam.MINTER_ROLE();
   console.log(`Renouncing Team Time Token Admin Role`);
   await timeTokenTeam.renounceRole(timeTokenTeamAdminRole, accounts[0].address);
-  console.log(`Renouncing Team Time Token Minter to DAO:${process.env.AVAX_GOVERNANCE_ADDRESS}`);
+  console.log(`Renouncing Team Time Token Minter to Role`);
   await timeTokenTeam.renounceRole(timeTokenTeamMinterRole, accounts[0].address);
 
   // TIME TOKEN TEAM
