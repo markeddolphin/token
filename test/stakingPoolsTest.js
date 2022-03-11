@@ -1,6 +1,16 @@
 const { expect } = require("chai");
 const { ethers, deployments, getNamedAccounts } = require("hardhat");
 
+// configure relative weights for emissions of tokens (NOTE: ORDER MATTERS!)
+const poolWeights = {
+  team: 1600,
+  preSeed: 1000,
+  dao: 1000,
+  public: 6400, // eventually this can be split into TIC<>ETH LP and TIC only.
+};
+// establish how many tokens are emitted per second (61,000  / week / 604800 sec)
+const rewardRate = ethers.utils.parseUnits("0.100859788359788", 18); // .1008... with 18 decimals / block
+
 describe("StakingPools", () => {
   let stakingPools;
   let timeTokenTeam;
@@ -46,6 +56,15 @@ describe("StakingPools", () => {
       accounts[0]
     );
     namedAccounts = await getNamedAccounts();
+
+    // 2. Set weights for tokens
+    await stakingPools.setRewardWeights(Object.values(poolWeights), {
+      gasLimit: 300000,
+    });
+
+    // 3. Set the block reward rate
+    await stakingPools.setRewardRate(rewardRate);
+
     totalEmissionsPerSecond = await stakingPools.rewardRate();
   });
 
