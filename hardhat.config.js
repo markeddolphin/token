@@ -39,6 +39,13 @@ module.exports = {
       chainId: 43113,
       accounts:
         process.env.FUJI_PRIVATE_KEY !== undefined ? [process.env.FUJI_PRIVATE_KEY] : [],
+    },
+    avalanche: {
+      url: 'https://api.avax.network/ext/bc/C/rpc',
+      gasPrice: 58000000000, // 58 nAVAX (10e9)
+      chainId: 43114,
+      accounts:
+        process.env.AVAX_PRIVATE_KEY !== undefined ? [process.env.AVAX_PRIVATE_KEY] : [],
     }
   },
   paths: {
@@ -54,6 +61,7 @@ module.exports = {
       goerli: process.env.GOERLI_GOVERNANCE_ADDRESS,
       mainnet: process.env.MAINNET_GOVERNANCE_ADDRESS,
       fuji: process.env.FUJI_GOVERNANCE_ADDRESS,
+      avalanche: process.env.AVAX_GOVERNANCE_ADDRESS,
     },
     liquidityProvider2: {
       default: 2,
