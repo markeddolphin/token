@@ -10,13 +10,11 @@
   1. Mint Pre-Seed Time token to pre-seed
 1. Grant admin rights to DAO `HARDHAT_NETWORK="avalanche" node scripts/grantAdminToDAO.js` 
   1. Grant TIC Token admin DAO
-  1. Grant DAO Time token admin to DAO
-  1. Grant Team Time token admin to DAO
-  1. Grant Pre-Seed Time token admin DAO
-1. CONFIRM!
+  1. Grant DAO Time token admin and minter to DAO
+  1. Grant Team Time token admin and minter to DAO
+  1. Grant Pre-Seed Time token admin and minter to DAO
+1. Confirm on snowscan correct admin permissions for the DAO for all 4 token contracts.
 1. DAO accept pending governance of staking pools
-1. DAO confirm admin role on all TIME tokens
 1. Stake DAO time token
-1. Confirm DAO has all rights and then Renounce all roles from deployment address (admin, minter) for all time tokens + TIC
-
-
+1. Renounce all rights from deployer address `HARDHAT_NETWORK="avalanche" node scripts/renounceRoles.js` 
+1. When ready from DAO, call setRewardRate to enable staking
