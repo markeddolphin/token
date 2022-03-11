@@ -1,7 +1,7 @@
 # Mainnet deployment instructions
 1. Update .env file for correct keys and addresses.
 1. Update desired gas price in hardhat (https://snowtrace.io/gastracker)
-1. Deploy contracts to avalanche `npx hardhat deploy --network avalanche  --export-all ./artifacts/deployments.json'
+1. Deploy contracts to avalanche `npx hardhat deploy --network avalanche  --export-all ./artifacts/deployments.json`
 1. Verify on etherscan `npx hardhat --network avalanche etherscan-verify --api-key <APIKEY>`
 1. Pre-mine TIC to DAO and mint all TIME tokens `HARDHAT_NETWORK="avalanche" node scripts/mintToken.js` 
    1. Pre-mine tokens to DAO
