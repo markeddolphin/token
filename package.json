@@ -1,6 +1,6 @@
 {
-  "name": "@elasticswap/elasticswap",
-  "version": "0.0.6",
+  "name": "@elasticswap/token",
+  "version": "0.0.1",
   "description": "The first AMM with native support for tokens with elastic supply",
   "main": "index.js",
   "private": false,
