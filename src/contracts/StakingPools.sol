@@ -311,7 +311,7 @@ contract StakingPools is ReentrancyGuard {
     return _pool.rewardWeight;
   }
 
-  /// @dev Gets the amount of tokens per block being distributed to stakers for a pool.
+  /// @dev Gets the amount of tokens per second being distributed to stakers for a pool.
   ///
   /// @param _poolId the identifier of the pool.
   ///
