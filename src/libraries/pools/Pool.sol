@@ -44,7 +44,7 @@ library Pool {
   ///
   /// @param _ctx the pool context.
   ///
-  /// @return the reward rate of the pool in tokens per block.
+  /// @return the reward rate of the pool in tokens per second.
   function getRewardRate(Data storage _data, Context storage _ctx)
     internal view
     returns (uint256)

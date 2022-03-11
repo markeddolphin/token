@@ -139,7 +139,7 @@ contract StakingPools is ReentrancyGuard {
   ///
   /// This will update all of the pools.
   ///
-  /// @param _rewardRate The number of tokens to distribute per block.
+  /// @param _rewardRate The number of tokens to distribute per second.
   function setRewardRate(uint256 _rewardRate) external onlyGovernance {
     _updatePools();
 
@@ -301,7 +301,7 @@ contract StakingPools is ReentrancyGuard {
     return _pool.totalDeposited;
   }
 
-  /// @dev Gets the reward weight of a pool which determines how much of the total rewards it receives per block.
+  /// @dev Gets the reward weight of a pool which determines how much of the total rewards it receives per second.
   ///
   /// @param _poolId the identifier of the pool.
   ///
