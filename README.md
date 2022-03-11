@@ -21,6 +21,7 @@
 1. DAO accept pending governance from StakingPools.sol
 1. Stake DAO time token
 1. Renounce all rights from deployer address `HARDHAT_NETWORK="avalanche" node scripts/renounceRoles.js` 
+1. Publish all mainnet addresses
 1. When ready from DAO, call setRewardRate to enable staking (~24 hrs later)
 1. Enable Sablier streams for Seed participants
 
