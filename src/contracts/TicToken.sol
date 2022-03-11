@@ -30,7 +30,7 @@ contract TicToken is AccessControl, ERC20("ElasticSwap Tic Token", "TIC") {
 
   /// @dev A modifier which checks that the caller has the minter role.
   modifier onlyMinter() {
-    require(hasRole(MINTER_ROLE, msg.sender), "TickToken: only minter");
+    require(hasRole(MINTER_ROLE, msg.sender), "TicToken: only minter");
     _;
   }
 
