@@ -10,8 +10,8 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     dao: 1000, 
     public: 6400, // eventually this can be split into TIC<>ETH LP and TIC only. 
   }
-  // establish how many tokens are emitted per block
-  const rewardRate = ethers.utils.parseUnits("2.0", 18); // 2 with 18 decimals / block
+  // establish how many tokens are emitted per second (61,000  / week / 604800 sec)
+  const rewardRate = ethers.utils.parseUnits("0.100859788359788", 18); // .1008... with 18 decimals / block
 
   const poolLib = await deployments.get("Pool");
   const stakeLib = await deployments.get("Stake");

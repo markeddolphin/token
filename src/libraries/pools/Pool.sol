@@ -25,7 +25,7 @@ library Pool {
     uint256 totalDeposited;
     uint256 rewardWeight;
     FixedPointMath.FixedDecimal accumulatedRewardWeight;
-    uint256 lastUpdatedBlock;
+    uint256 lastUpdatedBlockTimestamp;
   }
 
   struct List {
@@ -37,14 +37,14 @@ library Pool {
   /// @param _ctx the pool context.
   function update(Data storage _data, Context storage _ctx) internal {
     _data.accumulatedRewardWeight = _data.getUpdatedAccumulatedRewardWeight(_ctx);
-    _data.lastUpdatedBlock = block.number;
+    _data.lastUpdatedBlockTimestamp = block.timestamp;
   }
 
   /// @dev Gets the rate at which the pool will distribute rewards to stakers.
   ///
   /// @param _ctx the pool context.
   ///
-  /// @return the reward rate of the pool in tokens per block.
+  /// @return the reward rate of the pool in tokens per second.
   function getRewardRate(Data storage _data, Context storage _ctx)
     internal view
     returns (uint256)
@@ -65,7 +65,7 @@ library Pool {
       return _data.accumulatedRewardWeight;
     }
 
-    uint256 _elapsedTime = block.number - _data.lastUpdatedBlock;
+    uint256 _elapsedTime = block.timestamp - _data.lastUpdatedBlockTimestamp;
     if (_elapsedTime == 0) {
       return _data.accumulatedRewardWeight;
     }
