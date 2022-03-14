@@ -3,7 +3,7 @@
 1. Update desired gas price in hardhat (https://snowtrace.io/gastracker)
 1. Deploy contracts to avalanche `npx hardhat deploy --network avalanche  --export-all ./artifacts/deployments.json`
 1. Verify on etherscan `npx hardhat --network avalanche etherscan-verify --api-key <APIKEY>`
-1. Pre-mine TIC to DAO and mint all TIME tokens `HARDHAT_NETWORK="avalanche" node scripts/mintToken.js` 
+1. Pre-mine TIC to DAO and mint all TIME tokens `HARDHAT_NETWORK="avalanche" node scripts/mintTokens.js` 
    1. Pre-mine tokens to DAO
    1. Mint DAO Time token to DAO
    1. Mint Team Time token to Team
@@ -12,6 +12,7 @@
 1. Add the new Sushi LP address to .env
 1. Create pool for Sushi LP tokens `HARDHAT_NETWORK="avalanche" node scripts/createSushiPool.js` 
 1. Set weights for all pools `HARDHAT_NETWORK="avalanche" node scripts/setPoolWeights.js` 
+1. Confirm pool addresses and weights on snowscan.
 1. Grant admin rights to DAO `HARDHAT_NETWORK="avalanche" node scripts/grantAdminToDAO.js` 
    1. Grant TIC Token admin DAO
    1. Grant DAO Time token admin and minter to DAO
