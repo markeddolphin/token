@@ -10,7 +10,7 @@ const TEAM_ALLOCATION = {
   "0x022Cec2911Dbb3E49e1375B7c9eaa94F5cc7c8Bd" : ethers.utils.parseUnits("500", DECIMALS),
   "0xF7a94CCB3048Bdc95f8041D0a2D7bf939479f99d" : ethers.utils.parseUnits("250", DECIMALS),
   "0x5805b9Ef3A7E6b26B8CF1CEa42b06EfE598C526A" : ethers.utils.parseUnits("100", DECIMALS),
-  "0x5805b9Ef3A7E6b26B8CF1CEa42b06EfE598C526A" : ethers.utils.parseUnits("100", DECIMALS), // designer
+  "0xf481f3a48696f1f20679707fed3f680e4a84be0b" : ethers.utils.parseUnits("100", DECIMALS), 
   "0xa2dfA6120e342C2287d613Ca7896A7F34f7bCA56" : ethers.utils.parseUnits("50", DECIMALS), 
   "0x5aFDB0508F34A72139e4fA5F5672fFadee8a5Aa6" : ethers.utils.parseUnits("10", DECIMALS),
 }
