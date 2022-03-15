@@ -167,17 +167,17 @@ async function main () {
 
   console.log(`Pre-mining TIC Tokens to DAO:${process.env.AVAX_GOVERNANCE_ADDRESS}`);
   await ticToken.mint(process.env.AVAX_GOVERNANCE_ADDRESS, DAO_PRE_MINE); 
-  await utils.delay(2000);
+  await utils.delay(4000);
 
   console.log(`Minting TIME Token to DAO:${process.env.AVAX_GOVERNANCE_ADDRESS}`);
   await timeTokenDAO.mint(process.env.AVAX_GOVERNANCE_ADDRESS, ethers.utils.parseUnits("1", 18));
-  await utils.delay(2000);
+  await utils.delay(4000);
 
   console.log('Minting TIME Token to team');
   for (var address of Object.keys(TEAM_ALLOCATION)) {
     console.log(`Minting team token to:${address}`);
     await timeTokenTeam.mint(address, TEAM_ALLOCATION[address]);
-    await utils.delay(2000);
+    await utils.delay(4000);
   }
 
   console.log('Minting TIME Token to pre-seed...');
@@ -185,7 +185,7 @@ async function main () {
     const amount = PRESEED_ETH_CONTRIBUTIONS[address];
     console.log(`Minting ${ethers.utils.formatEther(amount)} pre-seed TIME token to:${address}`);
     await timeTokenPreSeed.mint(address, amount);
-    await utils.delay(2000);
+    await utils.delay(4000);
   }
 };
 
