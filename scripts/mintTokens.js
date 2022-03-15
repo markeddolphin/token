@@ -182,8 +182,8 @@ async function main () {
 
   console.log('Minting TIME Token to pre-seed...');
   for (var address of Object.keys(PRESEED_ETH_CONTRIBUTIONS)) {
-    const amount = ethers.utils.parseUnits(PRESEED_ETH_CONTRIBUTIONS[address], DECIMALS);
-    console.log(`Minting ${PRESEED_ETH_CONTRIBUTIONS[address]} pre-seed TIME token to:${address}`);
+    const amount = PRESEED_ETH_CONTRIBUTIONS[address];
+    console.log(`Minting ${ethers.utils.formatEther(amount)} pre-seed TIME token to:${address}`);
     await timeTokenPreSeed.mint(address, amount);
     await utils.delay(2000);
   }
