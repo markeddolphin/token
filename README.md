@@ -21,9 +21,19 @@
 1. Confirm on snowscan correct admin permissions for the DAO for all 4 token contracts.
 1. DAO accept pending governance from StakingPools.sol
 1. Stake DAO time token
+1. From DAO, call `setRewardRate` to enable staking for initial pools. LP, TIC, DAO 
+    1. 74636243386243120 // .074636...
 1. Renounce all rights from deployer address `HARDHAT_NETWORK="avalanche" node scripts/renounceRoles.js` 
 1. Publish all mainnet addresses
-1. When ready from DAO, call setRewardRate to enable staking (~24 hrs later)
+1. When ready from DAO, call setRewardRate to enable staking (~24 hrs later) and set updated pool weights. 
+    1. 100859788359788000 // .1008....
+    1. const POOL_WEIGHTS = {
+        team: 1600,
+        preSeed: 1000,
+        dao: 1000,
+        tic: 1600, // single side
+        lp: 4800, // lp tokens
+      };
 1. Enable Sablier streams for Seed participants
 
 

@@ -5,8 +5,8 @@ const deployments = hre.deployments;
 
 // configure relative weights for emissions of tokens (NOTE: ORDER MATTERS!)
 const POOL_WEIGHTS = {
-  team: 1600,
-  preSeed: 1000,
+  team: 0, //1600,
+  preSeed: 0, //1000,
   dao: 1000,
   tic: 1600, // single side
   lp: 4800, // lp tokens
