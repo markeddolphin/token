@@ -1,4 +1,13 @@
-# Mainnet deployment instructions
+# Deployed Addresses
+
+### TIC and Staking
+- [StakingPools](https://snowtrace.io/address/0x416494bD4FbEe227313b76a07A1e859928D7bA47) - 0x416494bD4FbEe227313b76a07A1e859928D7bA47
+- [TIC Token](https://snowtrace.io/address/0x75739a693459f33B1FBcC02099eea3eBCF150cBe) - 0x75739a693459f33B1FBcC02099eea3eBCF150cBe
+- [TIME Token DAO](https://snowtrace.io/address/0xBA41c2A2744e3749ab3E76FdFe6FCa5875D97660) - 0xBA41c2A2744e3749ab3E76FdFe6FCa5875D97660
+- [TIME Token Team](https://snowtrace.io/address/0x31fa86c83aE739220CE4fa93391BB321cC77670E) - 0x31fa86c83aE739220CE4fa93391BB321cC77670E
+- [TIME Token PreSeed](https://snowtrace.io/address/0x65C8CB3AFF7021c9A1579787e29B1c3D24c5cA59) - 0x65C8CB3AFF7021c9A1579787e29B1c3D24c5cA59
+
+### Mainnet deployment instructions
 1. Update .env file for correct keys and addresses.
 1. Update desired gas price in hardhat (https://snowtrace.io/gastracker)
 1. Deploy contracts to avalanche `npx hardhat deploy --network avalanche  --export-all ./artifacts/deployments.json`
