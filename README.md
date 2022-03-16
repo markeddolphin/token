@@ -8,17 +8,17 @@
    1. Mint DAO Time token to DAO
    1. Mint Team Time token to Team
    1. Mint Pre-Seed Time token to pre-seed
-1. Create initial Sushi pool for TIC <> USDC from DAO and seed round
-1. Add the new Sushi LP address to .env
-1. Create pool for Sushi LP tokens `HARDHAT_NETWORK="avalanche" node scripts/createSushiPool.js` 
-1. Set weights for all pools `HARDHAT_NETWORK="avalanche" node scripts/setPoolWeights.js` 
-1. Confirm pool addresses and weights on snowscan.
+1. Create initial Sushi pool for TIC <> USDC from DAO and seed round (TODO)
+1. Add the new Sushi LP address to .env (TODO)
+1. Create pool for Sushi LP tokens `HARDHAT_NETWORK="avalanche" node scripts/createSushiPool.js` (TODO)
+1. Set weights for all pools `HARDHAT_NETWORK="avalanche" node scripts/setPoolWeights.js` (TODO)
+1. Confirm pool addresses and weights on snowscan. (TODO)
 1. Grant admin rights to DAO `HARDHAT_NETWORK="avalanche" node scripts/grantAdminToDAO.js` 
    1. Grant TIC Token admin DAO
    1. Grant DAO Time token admin and minter to DAO
    1. Grant Team Time token admin and minter to DAO
    1. Grant Pre-Seed Time token admin and minter to DAO
-1. Confirm on snowscan correct admin permissions for the DAO for all 4 token contracts.
+1. Confirm on snowscan correct admin permissions for the DAO for all 4 token contracts. (TODO)
 1. DAO accept pending governance from StakingPools.sol
 1. Stake DAO time token
 1. From DAO, call `setRewardRate` to enable staking for initial pools. LP, TIC, DAO 
@@ -35,7 +35,3 @@
         lp: 4800, // lp tokens
       };
 1. Enable Sablier streams for Seed participants
-
-
-# TODO:
-1. get pre-seed allocation numbers

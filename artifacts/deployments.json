@@ -1,11 +1,11 @@
 {
-  "43113": [
+  "43114": [
     {
-      "name": "fuji",
-      "chainId": "43113",
+      "name": "avalanche",
+      "chainId": "43114",
       "contracts": {
         "FixedPointMath": {
-          "address": "0x8510B5952EE6a8443767B015b656530093d18383",
+          "address": "0x0C9A879fb675936475D449Fc27954d99165E7ED8",
           "abi": [
             {
               "inputs": [],
@@ -36,15 +36,15 @@
           ]
         },
         "Pool": {
-          "address": "0x04BBf26e05145174dB5F45ceDF8eFe4899B5460E",
+          "address": "0x13E492E96B8D8eB18615A069a065311424Db24dF",
           "abi": []
         },
         "Stake": {
-          "address": "0x45946bA6Df349B4Ba9f59DF59c5936Ba8049941d",
+          "address": "0x72e1aC485c3283E9c20d629cee22A15A6b3d34C0",
           "abi": []
         },
         "TicToken": {
-          "address": "0x98bD8504c58e338A99827BA8971AbEbFc7002cF1",
+          "address": "0x75739a693459f33B1FBcC02099eea3eBCF150cBe",
           "abi": [
             {
               "inputs": [],
@@ -572,7 +572,7 @@
           ]
         },
         "TimeTokenDAO": {
-          "address": "0xBa9A7c59bB59108FcBc5b90518A85eAAcc1Ef73b",
+          "address": "0xBA41c2A2744e3749ab3E76FdFe6FCa5875D97660",
           "abi": [
             {
               "inputs": [
@@ -1111,7 +1111,7 @@
           ]
         },
         "TimeTokenTeam": {
-          "address": "0xE4Bc8484d0054455196EeAE37cA8e28A8f3de5Da",
+          "address": "0x31fa86c83aE739220CE4fa93391BB321cC77670E",
           "abi": [
             {
               "inputs": [
@@ -1650,7 +1650,7 @@
           ]
         },
         "TimeTokenPreSeed": {
-          "address": "0x0A341f9d4168B42e099CED25e2eFCa807534d724",
+          "address": "0x65C8CB3AFF7021c9A1579787e29B1c3D24c5cA59",
           "abi": [
             {
               "inputs": [
@@ -2189,7 +2189,7 @@
           ]
         },
         "StakingPools": {
-          "address": "0xf21Dd6687Bcb49e52CD8A3280e895B845E78597a",
+          "address": "0x2b421FAd7ccd19879bCE50A2A00a1cD1460b371A",
           "abi": [
             {
               "inputs": [
