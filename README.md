@@ -1,6 +1,8 @@
 # Deployed Addresses
 
-### TIC and Staking
+### TIC and Staking 
+deployed commit [653d1e6](https://github.com/ElasticSwap/token/tree/653d1e687454d8934868747534c71b3a414c3b8c)
+
 - [StakingPools](https://snowtrace.io/address/0x416494bD4FbEe227313b76a07A1e859928D7bA47) - 0x416494bD4FbEe227313b76a07A1e859928D7bA47
 - [TIC Token](https://snowtrace.io/address/0x75739a693459f33B1FBcC02099eea3eBCF150cBe) - 0x75739a693459f33B1FBcC02099eea3eBCF150cBe
 - [TIME Token DAO](https://snowtrace.io/address/0xBA41c2A2744e3749ab3E76FdFe6FCa5875D97660) - 0xBA41c2A2744e3749ab3E76FdFe6FCa5875D97660
@@ -17,30 +19,20 @@
    1. Mint DAO Time token to DAO
    1. Mint Team Time token to Team
    1. Mint Pre-Seed Time token to pre-seed
-1. Create initial Sushi pool for TIC <> USDC from DAO and seed round (TODO)
-1. Add the new Sushi LP address to .env (TODO)
-1. Create pool for Sushi LP tokens `HARDHAT_NETWORK="avalanche" node scripts/createSushiPool.js` (TODO)
-1. Set weights for all pools `HARDHAT_NETWORK="avalanche" node scripts/setPoolWeights.js` (TODO)
-1. Confirm pool addresses and weights on snowscan. (TODO)
+1. Create initial Sushi pool for TIC <> USDC from DAO and seed round
+1. Add the new Sushi LP address to .env
+1. Create pool for Sushi LP tokens `HARDHAT_NETWORK="avalanche" node scripts/createSushiPool.js`
+1. Set weights for all pools `HARDHAT_NETWORK="avalanche" node scripts/setPoolWeights.js`
+1. Confirm pool addresses and weights on snowscan.
 1. Grant admin rights to DAO `HARDHAT_NETWORK="avalanche" node scripts/grantAdminToDAO.js` 
    1. Grant TIC Token admin DAO
    1. Grant DAO Time token admin and minter to DAO
    1. Grant Team Time token admin and minter to DAO
    1. Grant Pre-Seed Time token admin and minter to DAO
-1. Confirm on snowscan correct admin permissions for the DAO for all 4 token contracts. (TODO)
+1. Confirm on snowscan correct admin permissions for the DAO for all 4 token contracts.
 1. DAO accept pending governance from StakingPools.sol
 1. Stake DAO time token
 1. From DAO, call `setRewardRate` to enable staking for initial pools. LP, TIC, DAO 
-    1. 74636243386243120 // .074636...
 1. Renounce all rights from deployer address `HARDHAT_NETWORK="avalanche" node scripts/renounceRoles.js` 
 1. Publish all mainnet addresses
 1. When ready from DAO, call setRewardRate to enable staking (~24 hrs later) and set updated pool weights. 
-    1. 100859788359788000 // .1008....
-    1. const POOL_WEIGHTS = {
-        team: 1600,
-        preSeed: 1000,
-        dao: 1000,
-        tic: 1600, // single side
-        lp: 4800, // lp tokens
-      };
-1. Enable Sablier streams for Seed participants
